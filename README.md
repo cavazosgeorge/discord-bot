@@ -44,3 +44,6 @@ bun run dev
 ## Included Commands
 
 - `/ping`: replies with `Pong!`
+- `/hello`: replies with a greeting
+- `/userinfo`: shows your account and server join details
+- `/serverinfo`: shows basic information about the current server
