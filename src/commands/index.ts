@@ -1,11 +1,13 @@
 import { helloCommand } from "./hello.js";
 import { pingCommand } from "./ping.js";
+import { remindCommand } from "./remind.js";
 import { serverInfoCommand } from "./serverinfo.js";
 import { userInfoCommand } from "./userinfo.js";
 
 export const commands = [
   pingCommand,
   helloCommand,
+  remindCommand,
   userInfoCommand,
   serverInfoCommand,
 ];

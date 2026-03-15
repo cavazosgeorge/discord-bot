@@ -35,6 +35,8 @@ bun run register
 bun run dev
 ```
 
+The bot stores reminders in `data/reminders.sqlite`, which is created for you at runtime.
+
 ## Getting Your Guild ID
 
 1. In Discord, open `User Settings > Advanced`.
@@ -45,5 +47,6 @@ bun run dev
 
 - `/ping`: replies with `Pong!`
 - `/hello`: replies with a greeting
+- `/remind`: stores a reminder and sends it later, even after a restart
 - `/userinfo`: shows your account and server join details
 - `/serverinfo`: shows basic information about the current server

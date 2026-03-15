@@ -7,12 +7,14 @@ import {
 
 import { commandMap } from "./commands/index.js";
 import { env } from "./config.js";
+import { reminderService } from "./reminders/service.js";
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
 
 client.once(Events.ClientReady, (readyClient) => {
+  reminderService.start(readyClient);
   console.log(`Logged in as ${readyClient.user.tag}.`);
 });
 
@@ -42,12 +44,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
       flags: MessageFlags.Ephemeral,
     } as const;
 
-    if (interaction.replied || interaction.deferred) {
-      await interaction.followUp(reply);
-      return;
-    }
+    try {
+      if (interaction.replied || interaction.deferred) {
+        await interaction.followUp(reply);
+        return;
+      }
 
-    await interaction.reply(reply);
+      await interaction.reply(reply);
+    } catch (replyError) {
+      console.error(
+        `Failed to send an error response for "${interaction.commandName}".`,
+      );
+      console.error(replyError);
+    }
   }
 });
 
